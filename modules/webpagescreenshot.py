@@ -28,8 +28,8 @@ async def runwps(event):
             "document.documentElement.clientWidth, document.documentElement.scrollWidth, "
             "document.documentElement.offsetWidth);")
         driver.set_window_size(width + 125, height + 125)
-        driver.get_screenshot_as_file(screenshotfilename)
-        #driver.save_screenshot(screenshotfilename)
+        driver.save_screenshot(screenshotfilename)
+        sleep(3)
         driver.close()
         await event.client.send_file(messagelocation, screenshotfilename)
         remove(screenshotfilename)
