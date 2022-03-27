@@ -8,7 +8,7 @@ async def runupdate(event):
     try:
         system("git clone https://github.com/theridwanul/Ridogram.git")
         system("heroku git:remote -a mrupdatetester")
-        system("git push heroku master")
+        system("git push heroku main")
         await event.edit("Update Successfully")
     except:
         pass
