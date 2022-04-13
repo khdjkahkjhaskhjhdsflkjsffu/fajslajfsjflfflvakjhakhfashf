@@ -34,7 +34,7 @@ async def runwps(event):
         waitforcalculating = height / 1000
         await event.edit("Taking Screenshot...")
         await asyncio.sleep(int(waitforcalculating))
-        driver.save_screenshot(screenshotfilename)
+        takingscreenshot = driver.get_screenshot_as_png(screenshotfilename)
         await event.edit("Stoppping Google Chrome...")
         driver.close()
         await event.delete()
