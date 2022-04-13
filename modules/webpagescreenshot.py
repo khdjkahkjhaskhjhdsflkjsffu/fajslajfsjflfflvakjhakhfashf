@@ -1,6 +1,7 @@
 from telethon import events
 from time import sleep
 from selenium import webdriver
+import asyncio
 from os import remove
 
 @events.register(events.NewMessage(outgoing=True, pattern=r'\.wps'))
@@ -28,8 +29,11 @@ async def runwps(event):
             "return Math.max(document.body.scrollWidth, document.body.offsetWidth, "
             "document.documentElement.clientWidth, document.documentElement.scrollWidth, "
             "document.documentElement.offsetWidth);")
-        driver.set_window_size(width + 100, height + 100)
+        driver.set_window_size(width + 125, height + 125)
         sleep(2)
+        waitforcalculating = height / 1000
+        await event.edit("Taking Screenshot...")
+        await asyncio.sleep(int(waitforcalculating))
         driver.save_screenshot(screenshotfilename)
         await event.edit("Stoppping Google Chrome...")
         driver.close()
